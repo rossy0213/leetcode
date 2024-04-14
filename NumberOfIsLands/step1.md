@@ -7,30 +7,27 @@
 // Time spend: 04:55
 class Solution {
     public int numIslands(char[][] grid) {
-        if (grid == null || grid.length == 0) {
-            return 0;
-        }
-
-        int cnt = 0;
+        int count = 0;
         for (int y = 0; y < grid.length; y++) {
             for (int x = 0; x < grid[0].length; x++) {
-                if (grid[y][x] == '1') {
-                    findBoundariesOfIsland(grid, x, y);
-                    cnt++;
+                if (grid[y][x] != '1') {
+                    continue;
                 }
+                fillIsland(grid, x, y);
+                count++;
             }
         }
 
-        return cnt;
+        return count;
     }
 
-    public void findBoundariesOfIsland(char[][] grid, int x, int y) {
+    public void fillIsland(char[][] grid, int x, int y) {
         if (y >= 0 && y < grid.length && x >= 0 && x < grid[0].length && grid[y][x] == '1') {
             grid[y][x] = '2';
-            findBoundariesOfIsland(grid, x - 1, y);
-            findBoundariesOfIsland(grid, x + 1, y);
-            findBoundariesOfIsland(grid, x, y - 1);
-            findBoundariesOfIsland(grid, x, y + 1);
+            fillIsland(grid, x - 1, y);
+            fillIsland(grid, x + 1, y);
+            fillIsland(grid, x, y - 1);
+            fillIsland(grid, x, y + 1);
         }
     }
 }
