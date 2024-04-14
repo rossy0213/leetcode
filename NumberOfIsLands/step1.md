@@ -3,7 +3,7 @@
 // Then we use DFS to replace island to '2' to mark it as visisted.
 // After we replaced all '1' of a island, then we count up the number of isLand.
 // Time complexity: O(N * M) N: number of rows, M: nums of columns
-// Space complexity: O(1) No addtioanl memory used here
+// Space complexity: O(N * M) wost case, if whole grid is land. Then we need the memory for stack dfs call
 // Time spend: 04:55
 class Solution {
     public int numIslands(char[][] grid) {
